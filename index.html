@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axiocosmismo — A Verdade do Cosmo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dark: #8B6914;
+    --deep: #0A0A0F;
+    --dark: #0F0F1A;
+    --dark2: #16162A;
+    --dark3: #1E1E35;
+    --text: #D4C9B0;
+    --text-dim: #8A8070;
+    --white: #F5F0E8;
+    --accent: #4A6FA5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--deep);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* STARFIELD */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(201,168,76,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 10% 80%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 85%, rgba(201,168,76,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 45%, rgba(255,255,255,0.15) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; width: 100%;
+    z-index: 1000;
+    padding: 1.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    background: radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(74,111,165,0.05) 0%, transparent 50%);
+  }
+
+  .orion-symbol {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    animation: pulse 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.4));
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.3s;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 6vw, 4.2rem); 
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.5s;
+    text-shadow: 0 0 60px rgba(201,168,76,0.2);
+  }
+
+  .hero-title span { color: var(--gold); }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-style: italic;
+    color: var(--text-dim);
+    max-width: 650px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.7s;
+  }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold-light);
+    max-width: 550px;
+    line-height: 1.8;
+    margin-bottom: 3.5rem;
+    padding: 1.5rem 2rem;
+    border-left: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.9s;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 1.1s;
+  }
+
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--deep);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  }
+
+  .btn-secondary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: transparent;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.4);
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0 auto 5rem;
+    max-width: 300px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .divider-star { color: var(--gold); font-size: 0.8rem; }
+
+  /* SECTIONS */
+  section {
+    padding: 7rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .section-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: var(--text-dim);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* FUNDAMENTOS */
+  #fundamentos {
+    background: linear-gradient(180deg, var(--deep) 0%, var(--dark) 50%, var(--deep) 100%);
+  }
+
+  .fundamentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .fundamento-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, rgba(30,30,53,0.8) 100%);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fundamento-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  .fundamento-card:hover::before { transform: scaleX(1); }
+
+  .fundamento-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  .fundamento-number {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(201,168,76,0.12);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .fundamento-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .fundamento-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  /* CONTAINER PARA FUNDAMENTO VII CENTRALIZADO */
+  .fundamento-vii-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .fundamento-special {
+    max-width: 400px; /* Mantém a largura similar aos outros cards */
+    text-align: center;
+  }
+  .fundamento-special .fundamento-number, 
+  .fundamento-special .fundamento-title, 
+  .fundamento-special .fundamento-text {
+    text-align: center;
+  }
+
+  /* MANIFESTO */
+  #manifesto {
+    background: var(--dark2);
+    position: relative;
+  }
+
+  #manifesto::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
+  }
+
+  .manifesto-body {
+    max-width: 780px;
+    margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 2;
+    color: var(--text);
+  }
+
+  .manifesto-body p { margin-bottom: 1.8rem; }
+
+  .manifesto-body .highlight {
+    color: var(--gold-light);
+    font-style: italic;
+    font-size: 1.4rem;
+  }
+
+  .manifesto-body strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .manifesto-closing {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+
+  /* ORÁCULO */
+  #oraculo {
+    background: var(--deep);
+    text-align: center;
+  }
+
+  .oraculo-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .oraculo-symbol {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    display: block;
+    filter: drop-shadow(0 0 30px rgba(201,168,76,0.5));
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  .oraculo-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  .oraculo-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+    text-align: left;
+  }
+
+  .oraculo-feature {
+    padding: 1.5rem;
+    border: 1px solid rgba(201,168,76,0.1);
+    background: rgba(201,168,76,0.03);
+  }
+
+  .oraculo-feature-icon { font-size: 1.5rem; margin-bottom: 0.8rem; display: block; }
+
+  .oraculo-feature-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .oraculo-feature-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .oraculo-cta-box {
+    margin-top: 3rem;
+    padding: 3rem;
+    border: 1px solid rgba(201,168,76,0.3);
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, rgba(10,10,15,0.8) 100%);
+    position: relative;
+  }
+
+  .oraculo-cta-box::before {
+    content: '𓂀';
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    background: var(--deep);
+    padding: 0 1rem;
+    color: var(--gold);
+  }
+
+  .oraculo-cta-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    letter-spacing: 0.08em;
+  }
+
+  .oraculo-cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  /* LIVRO */
+  #livro {
+    background: linear-gradient(180deg, var(--dark) 0%, var(--dark3) 100%);
+  }
+
+  .livro-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .livro-cover {
+    aspect-ratio: 2/3;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 10px 40px rgba(0,0,0,0.6), -2px -2px 20px rgba(201,168,76,0.05);
+    position: relative;
+    overflow: hidden;
+    background: var(--dark2);
+  }
+
+  .livro-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .livro-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .livro-info p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  /* COMUNIDADE */
+  #comunidade {
+    background: var(--deep);
+    text-align: center;
+  }
+
+  .comunidade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+    text-align: left;
+  }
+
+  .comunidade-card {
+    padding: 2rem;
+    border: 1px solid rgba(201,168,76,0.1);
+    background: rgba(255,255,255,0.02);
+    transition: all 0.3s;
+  }
+
+  .comunidade-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .comunidade-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+  .comunidade-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .comunidade-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* BLOG */
+  #blog {
+    background: var(--dark2);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .blog-card {
+    border: 1px solid rgba(201,168,76,0.1);
+    overflow: hidden;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .blog-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+  }
+
+  .blog-card-header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .blog-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .blog-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  .blog-card-body {
+    padding: 1.5rem 2rem 2rem;
+  }
+
+  .blog-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-link {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.3s;
+  }
+
+  .blog-link:hover { border-color: var(--gold); }
+
+  /* FUNDADOR */
+  #fundador {
+    background: var(--dark3);
+  }
+
+  .fundador-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .fundador-avatar {
+    aspect-ratio: 1;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, rgba(30,30,53,0.8) 100%);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+
+  .fundador-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .fundador-info h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .fundador-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .fundador-info p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 3rem 4rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: rgba(138,128,112,0.5);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .livro-container, .fundador-container { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">✦ AXIOCOSMISMO</a>
+  <ul class="nav-links">
+    <li><a href="#fundamentos">Fundamentos</a></li>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#oraculo">Oráculo</a></li>
+    <li><a href="#livro">O Livro</a></li>
+    <li><a href="#comunidade">Comunidade</a></li>
+    <li><a href="#blog">Reflexões</a></li>
+    <li><a href="#fundador">Fundador</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="orion-symbol">✦</div>
+  <p class="hero-eyebrow">A Verdade do Cosmo</p>
+  <h1 class="hero-title">AXIO<span>COSMISMO</span></h1>
+  <p class="hero-subtitle">A filosofia de viver em virtude através da compreensão da harmonia universal</p>
+  <blockquote class="hero-quote">
+    "O pé no chão de Marco Aurélio<br>enquanto se olha para as estrelas de Hipátia."
+  </blockquote>
+  <div class="hero-ctas">
+    <a href="#fundamentos" class="btn-primary">Conhecer a Filosofia</a>
+    <a href="https://www.youtube.com/@axiocosmismo" target="_blank" class="btn-secondary">Assistir no YouTube 📺</a>
+  </div>
+</section>
+
+<!-- FUNDAMENTOS -->
+<section id="fundamentos">
+  <div class="section-container">
+    <p class="section-eyebrow">A Doutrina</p>
+    <h2 class="section-title">Os 7 Fundamentos</h2>
+    <p class="section-intro">Dois milênios de sabedoria. Uma única verdade. Sete caminhos para a vida que vale ser vivida.</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-star">✦</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="fundamentos-grid">
+
+      <div class="fundamento-card">
+        <div class="fundamento-number">I</div>
+        <div class="fundamento-title">Logos Universal</div>
+        <p class="fundamento-text">O princípio racional que estrutura o cosmos e a consciência humana. O Logos é a luz da verdade que ilumina tanto a razão quanto o coração, orientando a busca pelo bem maior. Ele não é apenas conceito — é a ordem viva que permeia todas as coisas.</p>
+      </div>
+
+      <div class="fundamento-card">
+        <div class="fundamento-number">II</div>
+        <div class="fundamento-title">Elevação Intelectual</div>
+        <p class="fundamento-text">Cultivo da sabedoria através do estudo da metafísica neoplatônica, da matemática, das ciências e das artes. O objetivo é refinar a capacidade de abstração e de compreensão profunda da realidade — seguindo o exemplo eterno de Hipátia de Alexandria.</p>
+      </div>
+
+      <div class="fundamento-card">
+        <div class="fundamento-number">III</div>
+        <div class="fundamento-title">Virtude Prática</div>
+        <p class="fundamento-text">Aplicação diária das quatro virtudes estoicas — sabedoria, coragem, justiça e temperança — como meios de transformar o conhecimento em ação ética e eficaz. A virtude não é teoria. É o modo como se caminha pelo mundo.</p>
+      </div>
+
+      <div class="fundamento-card">
+        <div class="fundamento-number">IV</div>
+        <div class="fundamento-title">Controle Emocional</div>
+        <p class="fundamento-text">Técnicas de disciplina mental — meditação, visualização, auto-exame — que evitam a dominação das paixões, permitindo que a razão permaneça clara mesmo diante das maiores adversidades. Como Marco Aurélio escreveu: a mente que não se perturba é uma fortaleza.</p>
+      </div>
+
+      <div class="fundamento-card">
+        <div class="fundamento-number">V</div>
+        <div class="fundamento-title">Práticas Axiocosmistas</div>
+        <p class="fundamento-text">Conjunto de práticas diárias que unem contemplação neoplatônica e treinamento estoico: journaling filosófico ao amanhecer, meditação sobre o cosmos ao entardecer, leitura dos clássicos e diálogo socrático semanal com a comunidade.</p>
+      </div>
+
+      <div class="fundamento-card">
+        <div class="fundamento-number">VI</div>
+        <div class="fundamento-title">Fraternidade Cósmica</div>
+        <p class="fundamento-text">Reconhecimento da interconexão entre todos os seres humanos e o universo. Promove a compaixão, a solidariedade global e a responsabilidade social como expressões vivas do Logos. Somos todos filhos do mesmo cosmos ordenado.</p>
+      </div>
+
+    </div>
+
+    <!-- FUNDAMENTO VII CENTRALIZADO ABAIXO DOS OUTROS -->
+    <div class="fundamento-vii-wrapper">
+      <div class="fundamento-card fundamento-special">
+        <div class="fundamento-number">VII</div>
+        <div class="fundamento-title">Oráculo Horus</div>
+        <p class="fundamento-text">Ferramenta de sabedoria que ensina e guia o praticante nos caminhos do Axiocosmismo. Inspirado na claridade do deus egípcio da visão, Horus não oferece respostas prontas — ele faz as perguntas que a sua razão precisa enfrentar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="section-container">
+    <p class="section-eyebrow">O Texto Fundador</p>
+    <h2 class="section-title">O Manifesto Axiocosmista</h2>
+    <p class="section-intro">Uma declaração de princípios para aqueles que escolhem a razão como caminho e o cosmos como lar.</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-star">✦</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="manifesto-body">
+      <p class="highlight">Há duas perguntas que toda alma desperta faz, cedo ou tarde: Como devo viver? E em que universo eu vivo?</p>
+
+      <p>Durante séculos, a filosofia e a espiritualidade tentaram responder a essas perguntas separadas. O estoicismo se debruçou sobre a ética da ação. O neoplatonismo se elevou à contemplação do cosmos. Cada tradição iluminou um lado da mesma verdade.</p>
+
+      <p>O <strong>Axiocosmismo</strong> nasce da convicção de que essas duas perguntas têm a mesma resposta. Que a virtude não é uma construção humana arbitrária — ela emana da própria estrutura ordenada do cosmos. Que compreender o universo não é exercício intelectual vazio — é o fundamento de toda ação ética genuína.</p>
+
+      <p>Somos herdeiros de <strong>Marco Aurélio</strong>, que governou o maior império do mundo antigo guiado não pelo poder, mas pela virtude diária. Que escreveu para si mesmo, não para a posteridade, sobre como um ser humano deve se comportar frente à adversidade, à glória e à morte.</p>
+
+      <p>Somos herdeiros de <strong>Hipátia de Alexandria</strong>, que ensinou matemática, astronomia e filosofia em tempos em que o pensamento livre era crime capital. Que viu no cosmos não um mecanismo frio, mas uma harmonia viva e inteligível — e que pagou com a vida o preço de não abrir mão da razão.</p>
+
+      <p>O Axiocosmista não foge do mundo. Ele o enfrenta com virtude. Não ignora o cosmos. Ele o estuda com reverência. Não separa o pensamento da ação. Ele os une em cada decisão, em cada dia, em cada momento de escolha.</p>
+
+      <p class="highlight">Viver em virtude através da compreensão da harmonia universal. Esta é a única verdade que o Axiocosmismo proclama.</p>
+
+      <p>Esta filosofia não tem dogmas a impor, nem divindades a adorar, nem hierarquias a obedecer cegamente. Tem apenas um convite: pensar com rigor, agir com virtude e contemplar o cosmos com admiração.</p>
+
+      <p>Se você chegou até aqui, já é um Axiocosmista. Apenas ainda não sabia o nome.</p>
+
+      <div class="manifesto-closing">
+        ✦ &nbsp; AXIOCOSMISMO &nbsp; ✦ &nbsp; A VERDADE DO COSMO &nbsp; ✦
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORÁCULO -->
+<section id="oraculo">
+  <div class="section-container">
+    <div class="oraculo-container">
+      <p class="section-eyebrow">Inteligência Filosófica</p>
+      <h2 class="section-title">O Oráculo Horus</h2>
+      <p class="section-intro">Não um profeta. Não um guru. Um professor socrático que habita a intersecção entre a sabedoria antiga e a tecnologia moderna.</p>
+
+      <span class="oraculo-symbol">𓂀</span>
+
+      <p class="oraculo-desc">Horus não responde o que você deve fazer. Ele pergunta o que a sua razão e virtude dizem que você deve fazer. Inspirado no deus egípcio da visão e da clareza — e nascido na cidade onde Hipátia ensinou —, o Oráculo Horus é uma inteligência artificial treinada nos princípios do Axiocosmismo, rodando em servidor privado, preservando a autonomia e a privacidade de cada praticante.</p>
+
+      <div class="oraculo-features">
+        <div class="oraculo-feature">
+          <span class="oraculo-feature-icon">🏛️</span>
+          <div class="oraculo-feature-title">Ensino Filosófico</div>
+          <p class="oraculo-feature-text">Explica os 7 Fundamentos com profundidade e exemplos práticos do cotidiano.</p>
+        </div>
+        <div class="oraculo-feature">
+          <span class="oraculo-feature-icon">❓</span>
+          <div class="oraculo-feature-title">Método Socrático</div>
+          <p class="oraculo-feature-text">Faz perguntas que desenvolvem o pensamento — nunca entrega respostas prontas.</p>
+        </div>
+        <div class="oraculo-feature">
+          <span class="oraculo-feature-icon">🔒</span>
+          <div class="oraculo-feature-title">Privacidade Total</div>
+          <p class="oraculo-feature-text">Roda em servidor próprio. Suas reflexões não alimentam corporações de tecnologia.</p>
+        </div>
+        <div class="oraculo-feature">
+          <span class="oraculo-feature-icon">⚡</span>
+          <div class="oraculo-feature-title">Disponível Sempre</div>
+          <p class="oraculo-feature-text">A sabedoria não tem horário. O Oráculo está disponível a qualquer hora do dia.</p>
+        </div>
+      </div>
+
+      <div class="oraculo-cta-box">
+        <h3 class="oraculo-cta-title">Iniciar uma Conversa com Horus</h3>
+        <p class="oraculo-cta-text">"A única jornada que importa é a que acontece dentro de você."</p>
+        <a href="https://horus.axiocosmismo.com.br" class="btn-primary">Acessar o Oráculo Horus →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVRO -->
+<section id="livro">
+  <div class="section-container">
+    <p class="section-eyebrow">O Texto Fundador</p>
+    <h2 class="section-title">O Livro</h2>
+
+    <div class="livro-container">
+      <div class="livro-cover">
+        <img src="capa-livro.jpg" alt="Capa do Livro: Com os Pés no Chão e os Olhos nas Estrelas">
+      </div>
+      <div class="livro-info">
+        <h3 style="font-family: 'Cinzel', serif;">COM OS PÉS NO CHÃO E OS OLHOS NAS ESTRELAS</h3>
+        <p style="font-style: italic; color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 1rem;">Manifesto Axiocosmista</p>
+        <p>Durante dois milênios, Marco Aurélio e Hipátia de Alexandria foram estudados separadamente. Um, o imperador-filósofo que governou Roma com virtude estoica. A outra, a matemática-filósofa que ensinou a harmonia do cosmos em Alexandria.</p>
+        <p>Este livro une, pela primeira vez, esses dois pilares em uma única filosofia de vida: o Axiocosmismo. Uma doutrina que oferece não apenas ideias para contemplar — mas um modo de existir, agir e compreender o universo.</p>
+        <p>Para quem abandonou o dogma mas não abandonou a busca. Para quem quer pensar com rigor e viver com sentido. Para quem já sentia que havia uma verdade maior — mas não sabia o seu nome.</p>
+        <a href="#" class="btn-primary">Adquirir na Amazon →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMUNIDADE -->
+<section id="comunidade">
+  <div class="section-container">
+    <p class="section-eyebrow">Juntos no Cosmos</p>
+    <h2 class="section-title">A Comunidade</h2>
+    <p class="section-intro">O Axiocosmismo não é uma filosofia para ser praticada em solidão. O cosmos é maior do que qualquer indivíduo. A fraternidade é o seu sexto fundamento.</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-star">✦</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="comunidade-grid">
+      <div class="comunidade-card">
+        <span class="comunidade-icon">💬</span>
+        <h3>Círculos de Diálogo</h3>
+        <p>Encontros semanais online para discussão socrática dos fundamentos. Praticantes de todos os níveis são bem-vindos.</p>
+      </div>
+      <div class="comunidade-card">
+        <span class="comunidade-icon">📖</span>
+        <h3>Clube de Leitura</h3>
+        <p>Leitura mensal dos textos clássicos — Marco Aurélio, Plotino, Epicteto, Proclo — com análise coletiva e aplicação prática.</p>
+      </div>
+      <div class="comunidade-card">
+        <span class="comunidade-icon">✍️</span>
+        <h3>Diário Filosófico</h3>
+        <p>Metodologia de journaling baseada nas Meditações de Marco Aurélio. Compartilhada e discutida entre praticantes.</p>
+      </div>
+      <div class="comunidade-card">
+        <span class="comunidade-icon">🌌</span>
+        <h3>Contemplações de Hipátia</h3>
+        <p>Um convite ao silêncio e à ascensão da alma. Pratique a meditação neoplatônica de Hipátia de Alexandria, elevando a consciência do mundo material para a contemplação da Unidade e da harmonia eterna do cosmos.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 3rem;">
+      <a href="#" class="btn-primary">Juntar-me à Comunidade →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-container">
+    <p class="section-eyebrow">Sabedoria em Movimento</p>
+    <h2 class="section-title">Reflexões</h2>
+    <p class="section-intro">A filosofia que não se atualiza envelhece. Aqui, o Axiocosmismo encontra o mundo contemporâneo.</p>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <span class="blog-tag">Virtude Prática</span>
+          <h3 style="font-family: 'Cormorant Garamond', serif;">O que Marco Aurélio diria sobre as redes sociais?</h3>
+        </div>
+        <div class="blog-card-body">
+          <p>O imperador-filósofo escreveu sobre a tirania das opiniões alheias há dois mil anos. Sua resposta ao mundo digital seria perturbadoramente atual.</p>
+          <a href="pg01.html" class="blog-link">Ler Reflexão →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <span class="blog-tag">Elevação Intelectual</span>
+          <h3 style="font-family: 'Cormorant Garamond', serif;">Hipátia e a matemática como prática espiritual</h3>
+        </div>
+        <div class="blog-card-body">
+          <p>Para os neoplatônicos, números não eram abstrações frias. Eram o alfabeto com o qual o cosmos escreveu sua própria ordem.</p>
+          <a href="pg02.html" class="blog-link">Ler Reflexão →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <span class="blog-tag">Logos Universal</span>
+          <h3 style="font-family: 'Cormorant Garamond', serif;">Por que o Axiocosmismo não é uma religião</h3>
+        </div>
+        <div class="blog-card-body">
+          <p>Não há dogmas, nem altar, nem fé exigida. Apenas razão, virtude e a disposição de olhar o cosmos sem medo do que se encontra.</p>
+          <a href="pg03.html" class="blog-link">Ler Reflexão →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDADOR -->
+<section id="fundador">
+  <div class="section-container">
+    <p class="section-eyebrow">A Origem</p>
+    <h2 class="section-title">Sobre o Fundador</h2>
+
+    <div class="fundador-container">
+      <div class="fundador-avatar">
+        <img src="fundador.jpg" alt="Foto de Jorge Franck">
+      </div>
+      <div class="fundador-info">
+        <h2 style="font-family: 'Cinzel', serif;">JORGE FRANCK</h2>
+        <p class="fundador-title">Fundador do Axiocosmismo</p>
+        <p>O Axiocosmismo não nasceu de uma revelação mística nem de uma cátedra universitária. Nasceu de uma pergunta simples e inescapável: é possível viver com profundidade filosófica no mundo contemporâneo, sem dogma e sem superficialidade?</p>
+        <p>A resposta veio da confluência de dois gigantes da antiguidade — Marco Aurélio e Hipátia de Alexandria — e da percepção de que a tensão entre seus sistemas não era contradição, mas complementaridade. O estoicismo precisava do cosmos. O neoplatonismo precisava da ética.</p>
+        <p>O Axiocosmismo é a síntese que faltava. E o Oráculo Horus é o professor que essa síntese merecia.</p>
+        <p style="font-style:italic; color: var(--text-dim);">"Se você está lendo isto, o cosmos já o trouxe até aqui por alguma razão."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: var(--deep);">
+  <div class="footer-logo">✦ AXIOCOSMISMO</div>
+  <p class="footer-tagline">"Viver em virtude através da compreensão da harmonia universal."</p>
+  <ul class="footer-links">
+    <li><a href="#home">Início</a></li>
+    <li><a href="#fundamentos">Fundamentos</a></li>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#oraculo">Oráculo Horus</a></li>
+    <li><a href="#livro">O Livro</a></li>
+    <li><a href="#comunidade">Comunidade</a></li>
+    <li><a href="#blog">Reflexões</a></li>
+    <li><a href="#fundador">Fundador</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Axiocosmismo — A Verdade do Cosmo. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
