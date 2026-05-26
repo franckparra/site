@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reflexão I — O que Marco Aurélio diria sobre as redes sociais?</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dark: #8B6914;
+    --deep: #0A0A0F;
+    --dark: #0F0F1A;
+    --dark2: #16162A;
+    --dark3: #1E1E35;
+    --text: #D4C9B0;
+    --text-dim: #8A8070;
+    --white: #F5F0E8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--deep);
+    color: var(--text);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* STARFIELD (Mantendo a consistência com a home) */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(201,168,76,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 10% 80%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 85%, rgba(201,168,76,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 45%, rgba(255,255,255,0.15) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: flex-start;
+    background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, transparent 100%);
+  }
+
+  .back-link {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+
+  .back-link:hover {
+    color: var(--white);
+    border-bottom: 1px solid var(--gold);
+  }
+
+  /* MAIN CONTENT */
+  .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 2rem 8rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .category-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: var(--white);
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+
+  .divider-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .divider-star { color: var(--gold); font-size: 0.8rem; }
+
+  article {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: var(--text);
+    text-align: justify;
+  }
+
+  p {
+    margin-bottom: 2rem;
+    line-height: 2;
+  }
+
+  .highlight-quote {
+    font-style: italic;
+    color: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    padding-left: 1.5rem;
+    margin: 3rem 0;
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+
+  strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .conclusion-box {
+    margin-top: 5rem;
+    padding: 3rem;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(22, 22, 42, 0.6);
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .conclusion-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .conclusion-text {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 1.2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper { padding: 2rem 1.5rem 8rem; }
+    article { text-align: left; font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="back-link">← Voltar ao Cosmo</a>
+</nav>
+
+<div class="content-wrapper">
+  <span class="category-tag">Virtude Prática</span>
+  <h1>O que Marco Aurélio diria sobre as redes sociais?</h1>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-star">✦</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <article>
+    <p>Imagine o Imperador de Roma, o homem que governou o mundo conhecido, deslizando o dedo por uma tela de vidro, observando a sucessão infinita de imagens filtradas, opiniões fragmentadas e a busca incessante por aprovação em forma de cliques. À primeira vista, pareceria um anacronismo absurdo. No entanto, para Marco Aurélio, a tecnologia mudaria, mas a <strong>natureza do ego humano</strong> permaneceria a mesma.</p>
+
+    <p>O imperador-filósofo escreveu extensivamente em suas <em>Meditações</em> sobre a futilidade da fama e a tirania das opiniões alheias. Ele nos lembrava que a glória é como a fumaça: efêmera, intangível e, em última análise, irrelevante para a construção de um caráter virtuoso. As redes sociais são a materialização digital dessa fumaça. Elas criam a ilusão de que existimos apenas na medida em que somos percebidos e validados por outros.</p>
+
+    <div class="highlight-quote">
+      "Tudo o que ouvimos é uma opinião, não um fato. Tudo o que vemos é uma perspectiva, não a verdade."
+    </div>
+
+    <p>Se Marco Aurélio estivesse entre nós hoje, ele provavelmente nos alertaria sobre a <strong>fragmentação da atenção</strong>. Para o Axiocosmismo, a mente deve ser uma fortaleza — a "Cidadela Interior". As redes sociais, por design, são invasoras de cidadelas. Elas nos arrancam do momento presente e nos lançam em um estado de comparação constante com vidas editadas, onde a virtude é substituída pela aparência de virtude.</p>
+
+    <p>Ele nos diria que buscar a validação de estranhos em uma plataforma digital é entregar a chave da nossa felicidade a terceiros. Para o estoico, a única aprovação que importa é a da própria razão e a conformidade com o <strong>Logos Universal</strong>. Quando trocamos a paz interior pelo frenesi de uma notificação, estamos trocando o ouro da consciência pelo pó do reconhecimento superficial.</p>
+
+    <p>Mas o Axiocosmismo não prega a fuga do mundo, e sim a maestria sobre ele. Marco Aurélio não nos diria para deletar nossas contas, mas para mudar nossa relação com elas. Ele nos ensinaria a usar essas ferramentas sem se tornar ferramenta delas. A rede social deveria ser um lugar de diálogo socrático e disseminação de sabedoria, e não um palco para o narcisismo.</p>
+
+    <p>A resposta do imperador ao mundo digital seria perturbadoramente atual: <strong>"Olhe para dentro de si mesmo. Lá reside a fonte do bem, e ela sempre jorra se você cavar profundamente o suficiente."</strong> No ruído dos algoritmos, a única verdade que permanece é aquela que cultivamos no silêncio da nossa própria alma.</p>
+  </article>
+
+  <div class="conclusion-box">
+    <div class="conclusion-title">Reflexão Axiocosmista</div>
+    <p class="conclusion-text">"Sua imagem digital é um eco. Sua virtude real é a voz. Não confunda o eco com a voz."</p>
+  </div>
+</div>
+
+<footer>
+  © 2026 Axiocosmismo — A Verdade do Cosmo
+</footer>
+
+</body>
+</html>
