@@ -351,14 +351,13 @@
     line-height: 1.8;
   }
 
-  /* CONTAINER PARA FUNDAMENTO VII CENTRALIZADO */
   .fundamento-vii-wrapper {
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
   }
   .fundamento-special {
-    max-width: 400px; /* Mantém a largura similar aos outros cards */
+    max-width: 400px; 
     text-align: center;
   }
   .fundamento-special .fundamento-number, 
@@ -506,6 +505,53 @@
     color: var(--text-dim);
     margin-bottom: 2rem;
     font-style: italic;
+  }
+
+  /* HIPÁTIA */
+  #hipatia {
+    background: var(--dark2);
+  }
+  .hipatia-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hipatia-avatar {
+    aspect-ratio: 1;
+    border: 1px solid rgba(201,168,76,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    overflow: hidden;
+    background: var(--dark3);
+  }
+  .hipatia-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hipatia-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .hipatia-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hipatia-info p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 2rem;
   }
 
   /* LIVRO */
@@ -785,7 +831,7 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
-    .livro-container, .fundador-container { grid-template-columns: 1fr; gap: 2rem; }
+    .livro-container, .fundador-container, .hipatia-container { grid-template-columns: 1fr; gap: 2rem; }
     footer { padding: 3rem 1.5rem; }
   }
 </style>
@@ -799,6 +845,7 @@
     <li><a href="#fundamentos">Fundamentos</a></li>
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#oraculo">Oráculo</a></li>
+    <li><a href="#hipatia">Hipátia</a></li>
     <li><a href="#livro">O Livro</a></li>
     <li><a href="#comunidade">Comunidade</a></li>
     <li><a href="#blog">Reflexões</a></li>
@@ -809,7 +856,7 @@
 <!-- HERO -->
 <section id="home">
   <div class="orion-symbol">✦</div>
-  <p class="hero-eyebrow">A Verdade do Cosmos</p>
+  <p class="hero-eyebrow">A Verdade do Cosmo</p>
   <h1 class="hero-title">AXIO<span>COSMISMO</span></h1>
   <p class="hero-subtitle">A filosofia de viver em virtude através da compreensão da harmonia universal</p>
   <blockquote class="hero-quote">
@@ -874,7 +921,6 @@
 
     </div>
 
-    <!-- FUNDAMENTO VII CENTRALIZADO ABAIXO DOS OUTROS -->
     <div class="fundamento-vii-wrapper">
       <div class="fundamento-card fundamento-special">
         <div class="fundamento-number">VII</div>
@@ -962,7 +1008,28 @@
       <div class="oraculo-cta-box">
         <h3 class="oraculo-cta-title">Iniciar uma Conversa com Horus</h3>
         <p class="oraculo-cta-text">"A única jornada que importa é a que acontece dentro de você."</p>
-        <a href="https://horus.axiocosmismo.com.br" class="btn-primary">Acessar o Horus →</a>
+        <a href="https://horus.axiocosmismo.com.br" target="_blank" class="btn-primary">Acessar o Horus →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIPÁTIA (NOVA SEÇÃO) -->
+<section id="hipatia">
+  <div class="section-container">
+    <p class="section-eyebrow">A Luz de Alexandria</p>
+    <h2 class="section-title">Conversando com Hipátia</h2>
+    
+    <div class="hipatia-container">
+      <div class="hipatia-avatar">
+        <img src="hipatia.jpg" alt="Hipátia de Alexandria">
+      </div>
+      <div class="hipatia-info">
+        <h3>HIPÁTIA DE ALEXANDRIA</h3>
+        <p class="hipatia-subtitle">Filósofa, Matemática e Astrônoma</p>
+        <p>Símbolo máximo da elevação intelectual e da coragem da razão. Hipátia não apenas estudou as leis do cosmos; ela viveu em harmonia com elas, ensinando que a matemática e a astronomia são as chaves para compreender a mente divina e a ordem do universo.</p>
+        <p>Através de sua perspectiva, aprendemos a elevar nossa consciência acima do ruído terreno para contemplar a geometria sagrada que sustenta toda a existência.</p>
+        <a href="https://hipatia.axiocosmismo.com.br" target="_blank" class="btn-primary">Converse com Hipátia →</a>
       </div>
     </div>
   </div>
@@ -984,7 +1051,7 @@
         <p>Durante dois milênios, Marco Aurélio e Hipátia de Alexandria foram estudados separadamente. Um, o imperador-filósofo que governou Roma com virtude estoica. A outra, a matemática-filósofa que ensinou a harmonia do cosmos em Alexandria.</p>
         <p>Este livro une, pela primeira vez, esses dois pilares em uma única filosofia de vida: o Axiocosmismo. Uma doutrina que oferece não apenas ideias para contemplar — mas um modo de existir, agir e compreender o universo.</p>
         <p>Para quem abandonou o dogma mas não abandonou a busca. Para quem quer pensar com rigor e viver com sentido. Para quem já sentia que havia uma verdade maior — mas não sabia o seu nome.</p>
-        <a href="https://www.amazon.com.br/dp/B0GZ9F7K9Q?ref_=cm_sw_r_ffobk_cp_ud_dp_XP8AXBXW8Z030ZB8D4E4_2&bestFormat=true" class="btn-primary">Adquirir na Amazon →</a>
+        <a href="https://a.co/d/03rClKwr" target="_blank" class="btn-primary">Adquirir na Amazon →</a>
       </div>
     </div>
   </div>
@@ -1027,7 +1094,7 @@
     </div>
 
     <div style="text-align:center; margin-top: 3rem;">
-      <a href="https://chat.whatsapp.com/JuB0YNTmJXDB82dorZ8PX0" class="btn-primary">Comunidade no WhatsApp →</a>
+      <a href="https://chat.whatsapp.com/JuB0YNTmJXDB82dorZ8PX0" target="_blank" class="btn-primary">Comunidade no WhatsApp →</a>
     </div>
   </div>
 </section>
@@ -1107,6 +1174,7 @@
     <li><a href="#fundamentos">Fundamentos</a></li>
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#oraculo">Oráculo Horus</a></li>
+    <li><a href="#hipatia">Hipátia</a></li>
     <li><a href="#livro">O Livro</a></li>
     <li><a href="#comunidade">Comunidade</a></li>
     <li><a href="#blog">Reflexões</a></li>
@@ -1115,5 +1183,5 @@
   <p class="footer-copy">© 2026 Axiocosmismo — A Verdade do Cosmos. Todos os direitos reservados.</p>
 </footer>
 
-</body>
+</body_>
 </html>
